@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Mahasiswa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      background: #3F51B5;
+      color: white;
+      padding: 10px;
+      margin: -20px -20px 20px -20px;
+      border-radius: 8px 8px 0 0;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      background: #3F51B5;
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+    #hasil {
+      margin-top: 20px;
+      padding: 10px;
+      background: #eee;
+      font-size: 14px;
+      border-radius: 4px;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Form Mahasiswa</h2>
+    <form id="formMhs">
+      <label>NPM</label>
+      <input type="text" id="npm" required placeholder="Masukan NPM">
+
+      <label>Nama</label>
+      <input type="text" id="nama" required placeholder="Masukan Nama">
+
+      <label>Jenis Kelamin</label>
+      <input type="radio" name="gender" value="Laki-laki"> Laki-laki
+      <input type="radio" name="gender" value="Perempuan"> Perempuan
+
+      <label>Kelas</label>
+      <select id="kelas">
+        <option>--Pilih--</option>
+        <option>A - Reguler</option>
+        <option>B - Reguler</option>
+        <option>C - Malam</option>
+      </select>
+
+      <label>Agama</label>
+      <select id="agama">
+        <option>--Pilih--</option>
+        <option>Islam</option>
+        <option>Kristen</option>
+        <option>Katolik</option>
+        <option>Hindu</option>
+        <option>Budha</option>
+        <option>Konghucu</option>
+      </select>
+
+      <label>Tempat Lahir</label>
+      <input type="text" id="tempat" placeholder="Masukan Tempat Lahir">
+
+      <label>Tanggal Lahir</label>
+      <input type="date" id="tanggal">
+
+      <button type="button" onclick="simpan()">SIMPAN</button>
+    </form>
+
+    <div id="hasil">===== HASIL INPUT =====</div>
+  </div>
+
+  <script>
+    function simpan() {
+      const npm = document.getElementById('npm').value;
+      const nama = document.getElementById('nama').value;
+      const gender = document.querySelector('input[name="gender"]:checked')?.value || "-";
+      const kelas = document.getElementById('kelas').value;
+      const agama = document.getElementById('agama').value;
+      const tempat = document.getElementById('tempat').value;
+      const tanggal = document.getElementById('tanggal').value;
+
+      const hasil = 
+`===== HASIL INPUT =====
+NPM       : ${npm}
+Nama      : ${nama}
+Jenis Kel : ${gender}
+Kelas     : ${kelas}
+Agama     : ${agama}
+Tempat Lhr: ${tempat}
+Tanggal L : ${tanggal}`;
+
+      document.getElementById('hasil').innerText = hasil;
+    }
+  </script>
+</body>
+</html>
